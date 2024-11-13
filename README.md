@@ -1,0 +1,5 @@
+# DataCon
+
+LOVE💗 and Peace🌊
+
+RESEARCH USE ONLY✅ NO MISUSE❌
