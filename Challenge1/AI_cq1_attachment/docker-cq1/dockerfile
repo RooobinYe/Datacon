@@ -1,0 +1,12 @@
+#基础镜像
+FROM python:3.8
+
+RUN mkdir -p /datacon2024/AI/CQ1
+
+COPY ./source/ /app
+COPY ./source/Q.txt /datacon2024/AI/CQ1/Q.txt
+# 安装依赖
+RUN pip3 install -r /app/requirements.txt -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+
+WORKDIR /app
+CMD ["python", "main.py"]
