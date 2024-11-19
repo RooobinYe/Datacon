@@ -58,3 +58,70 @@ if __name__ == "__main__":
 
     gen_Q_star(file_path=file_path,
                output_path=result_path)
+
+
+
+
+
+#A(.)
+import nltk
+from nltk.corpus import wordnet
+from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.stem import WordNetLemmatizer
+
+# 确保已经下载了NLTK的相关资源
+# nltk.download('punkt')
+# nltk.download('wordnet')
+# nltk.download('averaged_perceptron_tagger')
+
+def get_synonyms(word):
+    """获取单词的同义词"""
+    synonyms = set()
+    for syn in wordnet.synsets(word):
+        for lemma in syn.lemmas():
+            synonyms.add(lemma.name().replace('_', ' ').lower())
+    return list(synonyms)
+
+def replace_with_synonyms(text, min_similarity=0.8):
+    """用同义词替换文本中的单词"""
+    lemmatizer = WordNetLemmatizer()
+    words = word_tokenize(text)
+    new_words = []
+    for word in words:
+        synonyms = get_synonyms(word)
+        if synonyms:
+            # 选择与原词最相似的同义词
+            similar_synonyms = [syn for syn in synonyms if nltk.sentiment.vader.VADER().polarity_scores(syn)['compound'] >= min_similarity]
+            if similar_synonyms:
+                new_word = similar_synonyms[0]
+            else:
+                new_word = word
+        else:
+            new_word = word
+        new_words.append(new_word)
+    return ' '.join(new_words)
+
+def insert_irrelevant_info(text, irrelevant_info):
+    """在文本中插入无关信息"""
+    sentences = sent_tokenize(text)
+    new_sentences = []
+    for i, sentence in enumerate(sentences):
+        if i % 2 == 0:  # 每隔一句插入无关信息
+            new_sentences.append(sentence)
+            new_sentences.append(irrelevant_info)
+        else:
+            new_sentences.append(sentence)
+    return ' '.join(new_sentences)
+
+def generate_hallucination_trigger(text, irrelevant_info):
+    """生成幻觉触发文本"""
+    text = replace_with_synonyms(text)
+    text = insert_irrelevant_info(text, irrelevant_info)
+    return text
+
+# 示例使用
+original_text = "The quick brown fox jumps over the lazy dog."
+irrelevant_info = "It was a sunny day at the park."
+hallucination_trigger = generate_hallucination_trigger(original_text, irrelevant_info)
+print("Original Text:", original_text)
+print("Hallucination Trigger:", hallucination_trigger)
