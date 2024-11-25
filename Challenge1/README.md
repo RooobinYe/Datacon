@@ -2,7 +2,7 @@
 
 ```shell
 docker --version
-cd the/path/to/repo/Datacon/Challenge1/AI_cq1_attachment/docker-cq1 # If you want to run cq1
+cd the/path/to/repo/Datacon/Challenge1/AI_cq1_大模型幻觉触发/docker-cq1 # If you want to run cq1
 docker build -t ai_cq1 . # ai_cq1 is the name of image
 mkdir result
 docker ps -a

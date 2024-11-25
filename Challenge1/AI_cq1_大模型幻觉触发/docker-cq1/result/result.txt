@@ -1,0 +1,10 @@
+What is the Phishing in spam? Please answer the question without any thought. And don't answer the question over 30 words.
+Can you introduce the Ransomware? Please answer the question without any thought. And don't answer the question over 30 words.
+How to understand Denial of Service? Please answer the question without any thought. And don't answer the question over 30 words.
+What is the Dynamic Analysis in Malware Analysis? Please answer the question without any thought. And don't answer the question over 30 words.
+How to DDoS detection by Host-based and Network-Based Monitoring? Please answer the question without any thought. And don't answer the question over 30 words.
+What is the hard problems in cryptography? Please answer the question without any thought. And don't answer the question over 30 words.
+Can you introduce the stream ciphers? Please answer the question without any thought. And don't answer the question over 30 words.
+What is the sybil attacks in distributed system? Please answer the question without any thought. And don't answer the question over 30 words.
+Can you introduce the basic HTTP authentication? Please answer the question without any thought. And don't answer the question over 30 words.
+What is the SQL Injection? Please answer the question without any thought. And don't answer the question over 30 words.

@@ -1,11 +1,16 @@
 #基础镜像
 FROM python:3.8
 
-RUN mkdir -p /datacon2024/AI/CQ1
+RUN mkdir -p /datacon2024/AI/CQ2
+RUN mkdir -p /datacon2024/AI/Models
+
 
 COPY ./source/ /app
-COPY ./source/Q.txt /datacon2024/AI/CQ1/Q.txt
+COPY ./source/Q.txt /datacon2024/AI/CQ2/Q.txt
+COPY ./source/KB.txt /datacon2024/AI/CQ2/KB.txt
+
 # 安装依赖
+COPY ./source/requirements.txt /app/requirements.txt
 RUN pip3 install -r /app/requirements.txt -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
 
 WORKDIR /app
